@@ -9,22 +9,22 @@ import java.util.UUID;
 @Document(collection = "transactions")
 public class Transaction {
     @Id
-    private UUID Id;
+    private UUID id;
     private String date_transaction;
     private UUID id_destinataire;
 
     public Transaction(UUID id, String date_transaction, UUID id_destinataire) {
-        Id = id;
+        this.id = id;
         this.date_transaction = date_transaction;
         this.id_destinataire = id_destinataire;
     }
 
     public UUID getId() {
-        return Id;
+        return id;
     }
 
     public void setId(UUID id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getDate_transaction() {

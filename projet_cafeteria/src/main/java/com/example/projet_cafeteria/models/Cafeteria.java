@@ -8,22 +8,22 @@ import java.util.UUID;
 @Document(collection = "cafeteria")
 public class Cafeteria {
     @Id
-    private UUID Id;
+    private UUID id;
     private String nom;
     private String emplacement;
 
     public Cafeteria(UUID id, String nom, String emplacement) {
-        Id = id;
+        this.id = id;
         this.nom = nom;
         this.emplacement = emplacement;
     }
 
     public UUID getId() {
-        return Id;
+        return id;
     }
 
     public void setId(UUID id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getNom() {

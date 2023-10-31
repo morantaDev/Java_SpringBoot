@@ -5,19 +5,22 @@ import com.example.projet_cafeteria.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
+import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/users")
 public class UserController {
     @Autowired
-    UserService userService;
+    private UserService userService;
     //@RequestMapping(value = "/users", method = RequestMethod.GET)
     @GetMapping
     public ResponseEntity<Collection<User>> getAllUsers(){
-        Collection<User> users = userService.getAllUsers();
+        List<User> users = userService.getAllUsers();
         if (users.isEmpty()) {
             return new ResponseEntity("users not found", HttpStatus.NO_CONTENT);
         }
@@ -42,15 +45,23 @@ public class UserController {
             return new ResponseEntity("User not found or is not updatable", HttpStatus.NOT_FOUND);
         }
     }
-    @DeleteMapping("/{prenom}")
+    @GetMapping("deleteUser/{prenom}")
     public ResponseEntity getDeleteUser(@PathVariable String prenom){
         User userToDelete = userService.getUserByPrenom(prenom);
         if (userToDelete != null){
-            User deleteUser = userService.deleteUserByPrenom(userToDelete.getPrenom());
+            userService.deleteUserByPrenom(userToDelete.getPrenom());
             return new ResponseEntity<>("User deleted successfully", HttpStatus.OK);
         } else {
             return new ResponseEntity<>("There is an error when trying to delete a user", HttpStatus.NOT_FOUND);
         }
     }
-    
+
+    @GetMapping("/message")
+    public String home(Model model) {
+        Collection<User> users = userService.getAllUsers();
+        model.addAttribute("ListUsers", users);
+        return "home";
+    }
+
+
 }
