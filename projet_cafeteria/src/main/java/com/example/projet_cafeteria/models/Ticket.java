@@ -10,24 +10,24 @@ import java.util.UUID;
 @Document(collection = "tickets")
 public class Ticket {
     @Id
-    private UUID Id;
+    private UUID id;
     private String type_ticket;
     private Boolean utilise;
     private Date date_achat;
 
     public Ticket(UUID id, String type_ticket, Boolean utilise, Date date_achat) {
-        Id = id;
+        this.id = id;
         this.type_ticket = type_ticket;
         this.utilise = utilise;
         this.date_achat = date_achat;
     }
 
     public UUID getId() {
-        return Id;
+        return id;
     }
 
     public void setId(UUID id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getType_ticket() {

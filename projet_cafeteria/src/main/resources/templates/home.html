@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <title>Liste des Utilisateurs</title>
+    <link rel="stylesheet" href="/static/css/styles.css" th:href="@{/static/css/styles.css}">
+</head>
+<body>
+<!--<div th:replace="fragments/navbar :: navbar"></div>-->
+
+<h1>Liste des Utilisateurs</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>Prénom</th>
+        <th>Nom</th>
+        <th>Solde</th>
+        <th>Rôle</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${ListUsers}">
+        <td th:text="${user.prenom}"></td>
+        <td th:text="${user.nom}"></td>
+        <td th:text="${user.solde}"></td>
+        <td th:text="${user.role}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

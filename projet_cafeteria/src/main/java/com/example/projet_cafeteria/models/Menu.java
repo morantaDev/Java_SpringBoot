@@ -10,24 +10,24 @@ import java.util.UUID;
 @Document(collection = "menu")
 public class Menu {
     @Id
-    private UUID Id;
+    private UUID id;
     private Date date_menu;
     private String jour_de_la_semaine;
     private ArrayList<MenuItem> plats_disponibles;
 
     public Menu(UUID id, Date date_menu, String jour_de_la_semaine, ArrayList<MenuItem> plats_disponibles) {
-        Id = id;
+        this.id = id;
         this.date_menu = date_menu;
         this.jour_de_la_semaine = jour_de_la_semaine;
         this.plats_disponibles = plats_disponibles;
     }
 
     public UUID getId() {
-        return Id;
+        return id;
     }
 
     public void setId(UUID id) {
-        Id = id;
+        this.id = id;
     }
 
     public Date getDate_menu() {
